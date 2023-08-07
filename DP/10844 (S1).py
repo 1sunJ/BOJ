@@ -22,8 +22,6 @@ arr 요소의 값 수정 시 tmpArr 요소의 값도 수정
 
 '''
 
-# 가렌 장인의 코드
-
 def copyElement(arr) :  # 배열 복사하기 (copy())
     newArr = []
     for x in arr : 
@@ -32,6 +30,8 @@ def copyElement(arr) :  # 배열 복사하기 (copy())
 cntArr = [0,1,1,1,1,1,1,1,1,1]  # arr[i] = 마지막 숫자가 i인 계단 수의 개수
 
 N = int(input())  # 입력
+
+arrCnt = [0,1,1,1,1,1,1,1,1,1]
 
 for _ in range(N-1) :
     tmpArr = copyElement(arrCnt)
