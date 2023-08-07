@@ -11,7 +11,8 @@ x번 카드와 y번 카드를 골라 그 두 장에 쓰여진 수를 더한 값�
 
 < 해설 >
 더한 두 수만큼 총합이 커지기 M번 동안 작은 수끼리 더한다.
-더한 후에 정렬하기.
+더한 후에 정렬하기.    O(M*NlogN)
+ => 실행시간 개선방법 : heap사용    O(M*logN)
 '''
 
 
@@ -23,9 +24,24 @@ input = sys.stdin.readline
 N, M = map(int, input().split())
 arr = list(map(int, input().split()))
 
-for _ in range(M) :
+# 코드2 : 통과(개선) / heap을 이용한 실행시간 단축
+import heapq
+heapq.heapify(arr)
+
+for _ in range(M) :    # O(M*logN)    => 압도적으로 빠름
+    n1 = heapq.heappop(arr)
+    n2 = heapq.heappop(arr)
+    heapq.heappush(arr, n1+n2)
+    heapq.heappush(arr, n1+n2)
+
+print(sum(arr))
+
+# 코드1 : 통과
+'''
+for _ in range(M) :    # O(M*NlogN)
     arr.sort()
     new = arr[0] + arr[1]
     arr[0], arr[1] = new, new
 
 print(sum(arr))
+'''
